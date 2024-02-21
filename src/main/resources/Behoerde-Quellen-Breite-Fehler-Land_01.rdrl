@@ -12,7 +12,7 @@ rule "Behoerde-Quellen-Breite-Fehler-Land_01"
     agenda-group "KOMPLEXPRUEFUNG_01_BEHOERDE"
 when
     $rumeUploadDto : EURegRumeUploadDto( data != null )
-    $euRegAnlageDto : EURegAnlageRumeDto( getData().getAnlage() != null )
+$euRegAnlageDto : EURegItemDto( anlage != null )
     $anlage : AnlageRumeDto() from $euRegAnlageDto.getAnlage()
     exists QuelleEuRegRumeDto( breite != null, breite >= 200 ) from $anlage.getQuellen()
     $teilergebnis : KpTeilergebnisDto()
