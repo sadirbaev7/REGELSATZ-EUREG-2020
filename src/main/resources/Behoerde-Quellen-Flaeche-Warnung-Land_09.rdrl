@@ -12,7 +12,7 @@ rule "Behoerde-Quellen-Flaeche-Warnung-Land_09"
     agenda-group "KOMPLEXPRUEFUNG_09_BEHOERDE"
 when
     $rumeUploadDto : EURegRumeUploadDto( data != null )
-    $euRegAnlageDto : EURegAnlageRumeDto( getData().getAnlage() != null )
+$euRegAnlageDto : EURegItemDto( anlage != null )
     $anlage : AnlageRumeDto() from $euRegAnlageDto.getAnlage()
     exists QuelleEuRegRumeDto( flaeche != null, flaeche < 250.0 && flaeche > 150 ) from $anlage.getQuellen()
     $teilergebnis : KpTeilergebnisDto()
