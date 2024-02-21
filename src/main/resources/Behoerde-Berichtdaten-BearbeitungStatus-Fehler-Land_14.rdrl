@@ -8,7 +8,7 @@ rule "Behoerde-Berichtdaten-BearbeitungStatus-Fehler-Land_14"
 	dialect "java"
 	agenda-group "KOMPLEXPRUEFUNG_14_BEHOERDE"
 	when
-		EURegRumeUploadDto( data != null , (getData().getBetriebsstaette().getBerichtsdaten().getBearbeitungsstatus().getSchluessel() == "00" || getData().getBetriebsstaette().getBerichtsdaten().getBearbeitungsstatus().getSchluessel() == "01"))
+		EURegRumeUploadDto( data != null , getData().getAnlage() != null, (getData().getBetriebsstaette().getBerichtsdaten().getBearbeitungsstatus().getSchluessel() == "00" || getData().getBetriebsstaette().getBerichtsdaten().getBearbeitungsstatus().getSchluessel() == "01"))
 		teilergebnis : KpTeilergebnisDto( )
 	then
 		teilergebnis.addRegelergebnisFehler( "Bearbeitungstatus muss bin in durch Behoerde", "Behoerde-Berichtdaten-BearbeitungStatus-Fehler-Land_14", "Bearbeitungsstatus muss geändert werden" );
