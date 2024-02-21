@@ -8,7 +8,7 @@ rule "Behoerde-Berichtdaten-BearbeitungStatus-Warnung-Land_13"
 	dialect "java"
 	agenda-group "KOMPLEXPRUEFUNG_13_BEHOERDE"
 	when
-		EURegRumeUploadDto( data != null , getData().getAnlage() != null, getData().getBetriebsstaette().getBerichtsdaten().getBearbeitungsstatus().getSchluessel() == "02")
+		EURegRumeUploadDto( data != null , getData().getBetriebsstaette().getBerichtsdaten().getBearbeitungsstatus().getSchluessel() == "02")
 		teilergebnis : KpTeilergebnisDto( )
 	then
 		teilergebnis.addRegelergebnisWarnung( "Bearbeitungstatus muss bin in Durch Behoerde Abgeschlossen", "Behoerde-Berichtdaten-BearbeitungStatus-Fehler-Land_13", "Bearbeitungsstatus sollte geändert werden" );
